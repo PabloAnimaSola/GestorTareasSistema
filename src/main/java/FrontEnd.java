@@ -1,17 +1,13 @@
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Scanner;
 
 
 public class FrontEnd {
     public static void main(String[] args) {
         Scanner escaner = new Scanner(System.in);
-        Map<Integer, String> sistemaOperativo = new HashMap<>(Map.of(
-                1, "Windows",
-                2, "MacOS",
-                3, "Linux"
-        ));
-        String sistemaUtilizado = BackEnd.conseguirSistemaOperativo(sistemaOperativo);
+        String sistemaUtilizado = BackEnd.conseguirSistemaOperativo();
         System.out.println("Bienvenido a la herramientas utilitarias del sistema.");
+        System.out.println(sistemaUtilizado);
+        System.out.println(System.getProperty("os.name"));
     }
 }
