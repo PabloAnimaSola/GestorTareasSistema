@@ -1,9 +1,10 @@
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
 public class FrontEnd {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner escaner = new Scanner(System.in);
         int accion = 0;
         boolean continuar = true;
@@ -45,7 +46,7 @@ public class FrontEnd {
             }
             switch (accion) {
                 case 1:
-                    System.out.println(BackEnd.almacenamientoEnSistema(sistemaUtilizado));
+                    BackEnd.almacenamientoEnSistema(sistemaUtilizado);
                     break;
                 case 2:
                     //placeholder;
