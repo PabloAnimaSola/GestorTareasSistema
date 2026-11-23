@@ -36,7 +36,7 @@ public class BackEnd {
         }
     }
 
-
+// TODO: REFORMATEAR ESTO DE NUEVO PARA VER SI POWERSHELL PUEDE IR SIN ESPECIFICAR TANTO
     public static String ejecutarComandoYDevolverResultado() throws IOException {
         String resultado = "";
         if (sistemaUtilizado.equals("macos") || sistemaUtilizado.equals("linux")) {
