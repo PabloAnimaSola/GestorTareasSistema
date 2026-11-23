@@ -7,7 +7,12 @@ He hecho un Dockerfile/Docker compose para que se pueda probar con una distribuc
 ### Para Ejecutarlo corre en tu terminal:
 
 ```
-docker build . -t gestor-tareas-sistema:1.0
+docker build . -t gestor-tareas-sistema:v1.0
+```
+### Seguido de
+
+```
+docker run -it gestor-tareas-sistema:v1.0
 ```
 
 ### O si usas docker compose:

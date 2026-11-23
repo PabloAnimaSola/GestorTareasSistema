@@ -14,4 +14,6 @@ public class BackEnd {
 
         return OSDetectado;
     }
+
+    public static String almacenamientoEnSistema(String sistemaUtilizado){return "hola";};
 }
