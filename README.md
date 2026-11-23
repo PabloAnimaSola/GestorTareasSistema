@@ -13,7 +13,7 @@ docker build . -t gestor-tareas-sistema:1.0
 ### O si usas docker compose:
 
 ```
-docker compose run --build--rm gestor-tareas
+docker compose run --build --rm gestor-tareas
 ```
 
 ### Estructura de ``compose.yaml``
