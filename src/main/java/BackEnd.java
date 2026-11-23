@@ -3,7 +3,7 @@ import java.io.IOException;
 public class BackEnd {
     private static String comando, argumentosComando;
 
-    public static final String sistemaUtilizado = conseguirSistemaOperativo().toLowerCase();
+    public static final String sistemaUtilizado = conseguirSistemaOperativo();
 
     public static String conseguirSistemaOperativo() {
         String OSDetectado = System.getProperty("os.name").toLowerCase();
@@ -22,13 +22,13 @@ public class BackEnd {
     }
 
     public static void almacenamientoEnSistema() throws IOException {
-        switch (sistemaUtilizado.toLowerCase()) {
-            case "windows":
+        switch (sistemaUtilizado) {
+            case "Windows":
                 comando = "Get-PSDrive";
                 argumentosComando = "-PSProvider FileSystem";
                 System.out.println(ejecutarComandoYDevolverResultado());
                 break;
-            case "macos", "linux":
+            case "MacOS", "Linux":
                 comando = "df";
                 argumentosComando = "-h";
                 System.out.println(ejecutarComandoYDevolverResultado());
@@ -39,11 +39,11 @@ public class BackEnd {
 // TODO: REFORMATEAR ESTO DE NUEVO PARA VER SI POWERSHELL PUEDE IR SIN ESPECIFICAR TANTO
     public static String ejecutarComandoYDevolverResultado() throws IOException {
         String resultado = "";
-        if (sistemaUtilizado.equals("macos") || sistemaUtilizado.equals("linux")) {
+        if (sistemaUtilizado.equals("MacOS") || sistemaUtilizado.equals("Linux")) {
             ProcessBuilder processBuilder = new ProcessBuilder(comando, argumentosComando);
             Process process = processBuilder.start();
             resultado = new String(process.getInputStream().readAllBytes());
-        } else if (sistemaUtilizado.equals("windows")) {
+        } else if (sistemaUtilizado.equals("Windows")) {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     "powershell.exe",
                     "-NoProfile",
@@ -54,5 +54,20 @@ public class BackEnd {
             resultado = new String(process.getInputStream().readAllBytes());
         }
         return resultado;
+    }
+
+    public static void limpiarPantalla() throws IOException {
+        switch (sistemaUtilizado) {
+            case "Windows":
+                comando = "cls";
+                argumentosComando = "";
+                System.out.println(ejecutarComandoYDevolverResultado());
+                break;
+            case "MacOS", "Linux":
+                comando = "clear";
+                argumentosComando = "";
+                System.out.println(ejecutarComandoYDevolverResultado());
+                break;
+        }
     }
 }
