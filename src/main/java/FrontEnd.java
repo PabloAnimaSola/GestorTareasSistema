@@ -8,13 +8,12 @@ public class FrontEnd {
         Scanner escaner = new Scanner(System.in);
         int accion = 0;
         boolean continuar = true;
-        String sistemaUtilizado = BackEnd.conseguirSistemaOperativo();
 
         System.out.printf("""
                 Bienvenido a las herramientas utilitarias del sistema.\s
                 Detectado sistema operativo: %s\s
                 
-                """, sistemaUtilizado);
+                """, BackEnd.sistemaUtilizado);
 
         while (continuar) {
             System.out.print("""
@@ -27,6 +26,7 @@ public class FrontEnd {
                     4. placeholder\s
                     5. placeholder\s
                     0. Salir del programa\s
+                    
                     """);
             try {
                 accion = escaner.nextInt();
@@ -46,12 +46,12 @@ public class FrontEnd {
             }
             switch (accion) {
                 case 1:
-                    BackEnd.almacenamientoEnSistema(sistemaUtilizado);
+                    BackEnd.almacenamientoEnSistema();
                     break;
                 case 2:
                     //placeholder;
                 case 0:
-                    System.out.println("¡Gracias por utilizar el programa en " + sistemaUtilizado + "!");
+                    System.out.println("¡Gracias por utilizar el programa en " + BackEnd.sistemaUtilizado + "!");
                     continuar = false;
                     break;
             }

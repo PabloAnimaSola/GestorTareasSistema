@@ -1,8 +1,10 @@
 import java.io.IOException;
 
 public class BackEnd {
-    private static String comando;
-    private static String argumentosComando;
+    private static String comando, argumentosComando;
+
+    public static final String sistemaUtilizado = conseguirSistemaOperativo();
+
     public static String conseguirSistemaOperativo() {
         String OSDetectado = System.getProperty("os.name").toLowerCase();
         if (OSDetectado.strip().contains("windows")) {
@@ -19,16 +21,14 @@ public class BackEnd {
         return OSDetectado;
     }
 
-    public static void almacenamientoEnSistema(String sistemaUtilizado) throws IOException {
-        String comandoParaEjecutar = "";
+    public static void almacenamientoEnSistema() throws IOException {
         switch (sistemaUtilizado.toLowerCase()) {
             case "windows":
-                comandoParaEjecutar = "comando en windows";
+                comando = "Get-PSDrive";
+                argumentosComando = "-PSProvider FileSystem";
+                System.out.println(ejecutarComandoYDevolverResultado());
                 break;
-            case "macos":
-                comandoParaEjecutar = "comando en macos";
-                break;
-            case "linux":
+            case "macos", "linux":
                 comando = "df";
                 argumentosComando = "-h";
                 System.out.println(ejecutarComandoYDevolverResultado());
@@ -38,8 +38,21 @@ public class BackEnd {
 
 
     public static String ejecutarComandoYDevolverResultado() throws IOException {
-        ProcessBuilder processBuilder = new ProcessBuilder(comando, argumentosComando);
-        Process process = processBuilder.start();
-        return new String(process.getInputStream().readAllBytes());
+        String resultado = "";
+        if (sistemaUtilizado.equals("macos") || sistemaUtilizado.equals("linux")) {
+            ProcessBuilder processBuilder = new ProcessBuilder(comando, argumentosComando);
+            Process process = processBuilder.start();
+            resultado = new String(process.getInputStream().readAllBytes());
+        } else if (sistemaUtilizado.equals("windows")) {
+            ProcessBuilder processBuilder = new ProcessBuilder(
+                    "powershell.exe",
+                    "-NoProfile",
+                    "-NonInteractive",
+                    "-Command", comando + " " + argumentosComando
+            );
+            Process process = processBuilder.start();
+            resultado = new String(process.getInputStream().readAllBytes());
+        }
+        return resultado;
     }
 }
