@@ -3,7 +3,7 @@ import java.io.IOException;
 public class BackEnd {
     private static String comando, argumentosComando;
 
-    public static final String sistemaUtilizado = conseguirSistemaOperativo();
+    public static final String sistemaUtilizado = conseguirSistemaOperativo().toLowerCase();
 
     public static String conseguirSistemaOperativo() {
         String OSDetectado = System.getProperty("os.name").toLowerCase();
@@ -43,7 +43,7 @@ public class BackEnd {
             ProcessBuilder processBuilder = new ProcessBuilder(comando, argumentosComando);
             Process process = processBuilder.start();
             resultado = new String(process.getInputStream().readAllBytes());
-        } /*else if (sistemaUtilizado.equals("windows")) {
+        } else if (sistemaUtilizado.equals("windows")) {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     "powershell.exe",
                     "-NoProfile",
@@ -52,7 +52,7 @@ public class BackEnd {
             );
             Process process = processBuilder.start();
             resultado = new String(process.getInputStream().readAllBytes());
-        }*/
+        }
         return resultado;
     }
 }
