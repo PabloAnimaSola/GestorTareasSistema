@@ -14,8 +14,7 @@ RUN mvn clean package -DskipTests
 
 # Ahora para ejecutarlo
 
-FROM amazoncorretto:25-alpine-jdk
-
+FROM eclipse-temurin:25-jre-alpine
 WORKDIR /app
 
 COPY --from=build /app/target/*.jar GestorTareasSistema.jar

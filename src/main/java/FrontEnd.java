@@ -12,5 +12,7 @@ public class FrontEnd {
 
         System.out.println(System.getenv("SHELL"));
 
+        String prueba = escaner.nextLine();
+        System.out.println("Hola, " + prueba);
     }
 }

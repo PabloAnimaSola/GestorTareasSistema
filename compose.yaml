@@ -1,2 +1,8 @@
 services:
-  
+  gestor-tareas:
+    image: gestor-tareas-sistema
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
