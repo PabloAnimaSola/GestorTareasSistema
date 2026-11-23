@@ -43,7 +43,7 @@ public class BackEnd {
             ProcessBuilder processBuilder = new ProcessBuilder(comando, argumentosComando);
             Process process = processBuilder.start();
             resultado = new String(process.getInputStream().readAllBytes());
-        } else if (sistemaUtilizado.equals("windows")) {
+        } /*else if (sistemaUtilizado.equals("windows")) {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     "powershell.exe",
                     "-NoProfile",
@@ -52,7 +52,7 @@ public class BackEnd {
             );
             Process process = processBuilder.start();
             resultado = new String(process.getInputStream().readAllBytes());
-        }
+        }*/
         return resultado;
     }
 }
