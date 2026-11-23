@@ -2,7 +2,7 @@
 import java.util.Scanner;
 
 
-public class Main {
+public class FrontEnd {
     public static void main(String[] args) {
         Scanner escaner = new Scanner(System.in);
         String sistemaUtilizado = BackEnd.conseguirSistemaOperativo();
