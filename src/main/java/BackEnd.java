@@ -5,7 +5,7 @@ public class BackEnd {
             OSDetectado = "Windows";
         } else if (OSDetectado.strip().contains("mac")) {
             OSDetectado = "MacOS";
-        } else if (OSDetectado.strip().contains("linux")){
+        } else if (OSDetectado.strip().contains("linux")) {
             OSDetectado = "Linux";
         } else {
             System.out.println("ERROR INTENTANDO CONSEGUIR EL SISTEMA OPERATIVO, SE DETENDRÁ EL PROGRAMA.");
