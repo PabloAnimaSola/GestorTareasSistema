@@ -32,4 +32,6 @@ services:
     stdin_open: true
     tty: true
 ```
-Por ahora no es necesario especificar ninguna variable de entorno.
+También puedes ejecutar el archivo compose en  ``scripts/UsarDockerCompose.ps1`` si no te funciona el comando
+
+Por ahora no es necesario especificar ninguna variable de entorno
